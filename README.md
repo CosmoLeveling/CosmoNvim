@@ -2,4 +2,4 @@
 ## Known issues
 only works on windows
 
-luasnip not working
+godot enum snippet doesn't work (might be all snippets for godot not sure)
