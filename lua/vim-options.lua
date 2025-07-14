@@ -175,6 +175,6 @@ vim.keymap.set("n", "<leader>ca", function()
 end, { desc = "Show [C]ode [A]ctions" })
 
 local projectfile = vim.fn.getcwd() .. "/project.godot"
-if projectfile then
+if vim.fn.filereadable(projectfile) == 1 then
 	vim.fn.serverstart("127.0.0.1:6004")
 end
