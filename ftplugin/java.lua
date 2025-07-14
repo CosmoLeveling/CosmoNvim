@@ -1,5 +1,5 @@
 local config = {
-	cmd = { "%appdata%/nvim-data/mason/bin/jdtls.cmd" },
+	cmd = { os.getenv("localappdata") .. "/nvim-data/mason/bin/jdtls.cmd" },
 	root_dir = vim.fs.dirname(vim.fs.find({ "gradlew", ".git", "mvnw" }, { upward = true })[1]),
 	init_options = {
 		bundles = {},
