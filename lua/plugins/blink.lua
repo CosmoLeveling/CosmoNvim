@@ -24,6 +24,7 @@ return { -- Autocompletion
 	end,
 
 	dependencies = {
+		"L3MON4D3/LuaSnip",
 		"folke/lazydev.nvim",
 	},
 	opts = {
