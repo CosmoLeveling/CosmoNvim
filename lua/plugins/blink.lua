@@ -3,7 +3,7 @@ return { -- Autocompletion
 	event = "VimEnter",
 	version = "1.*",
 	config = function()
-		require("blink-cmp").setup()
+		require("blink-cmp").setup(opts)
 		vim.keymap.set("i", "<Tab>", function()
 			local cmp = require("blink.cmp")
 			if cmp.is_visible() then
