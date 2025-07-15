@@ -1,55 +1,25 @@
-return { -- Autocompletion
+return {
 	"saghen/blink.cmp",
-	event = "VimEnter",
+	event = { "InsertEnter", "CmdlineEnter" },
 	version = "1.*",
-	config = function()
-		require("blink-cmp").setup(opts)
-		vim.keymap.set("i", "<Tab>", function()
-			local cmp = require("blink.cmp")
-			if cmp.is_visible() then
-				cmp.select_next()
-			else
-				vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<Tab>", true, false, true), "n", true)
-			end
-		end, { noremap = true, silent = true })
-		vim.keymap.set("i", "<CR>", function()
-			local cmp = require("blink.cmp")
-			if cmp.is_visible() and cmp.get_selected_item then
-				cmp.accept()
-			else
-				print("running else")
-				vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<CR>", true, false, true), "n", true)
-			end
-		end, { noremap = true, silent = true })
-	end,
-
 	dependencies = {
 		"L3MON4D3/LuaSnip",
 		"folke/lazydev.nvim",
+		"rafamadriz/friendly-snippets",
 	},
+
 	opts = {
 		keymap = {
-			preset = "default",
+			-- set to 'none' to disable the 'default' preset
+			preset = "enter",
 		},
-
-		appearance = {
-			nerd_font_variant = "mono",
-		},
-
-		completion = {
-			documentation = { auto_show = false },
-		},
-
-		snippets = {
-			preset = "luasnip",
-		},
-
 		sources = {
-			default = { "lsp", "path", "snippets", "lazydev", "buffer" },
+			default = { "lsp", "path", "snippets", "lazydev" },
+			providers = {
+				lazydev = { module = "lazydev.integrations.blink", score_offset = 100 },
+				snippets = { score_offset = 110 },
+			},
 		},
-
-		fuzzy = { implementation = "prefer_rust_with_warning" },
-
-		signature = { enabled = true },
+		snippets = { preset = "luasnip" },
 	},
 }
