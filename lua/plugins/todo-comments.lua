@@ -18,6 +18,7 @@ return {
 			WARN = { icon = " ", color = "warning", alt = { "WARNING", "XXX" } },
 			PERF = { icon = " ", alt = { "OPTIM", "PERFORMANCE", "OPTIMIZE" } },
 			NOTE = { icon = " ", color = "hint", alt = { "INFO" } },
+			DEBUG = { icon = " ", color = "hint", alt = { "DBUG" } },
 			TEST = { icon = "⏲ ", color = "test", alt = { "TESTING", "PASSED", "FAILED" } },
 			COMP = { icon = " ", color = "complete", alt = { "COMPLETE" } },
 		},
