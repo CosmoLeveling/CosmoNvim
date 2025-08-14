@@ -178,3 +178,14 @@ local projectfile = vim.fn.getcwd() .. "/project.godot"
 if vim.fn.filereadable(projectfile) == 1 then
 	vim.fn.serverstart("127.0.0.1:6004")
 end
+local rustproject = vim.fn.getcwd() .. "/Cargo.toml"
+if vim.fn.filereadable(rustproject) == 1 then
+	vim.keymap.set("n", "<leader>rr", function()
+		local cmd = 'wt -p "Developer Command Prompt for VS 2022" -d . cmd /k "cargo run && exit"'
+		os.execute(cmd)
+	end, { desc = "[R]ust [R]un" })
+	vim.keymap.set("n", "<leader>rb", function()
+		local cmd = 'wt -p "Developer Command Prompt for VS 2022" -d . cmd /k "cargo build --release && exit"'
+		os.execute(cmd)
+	end, { desc = "[R]ust [B]uild" })
+end
